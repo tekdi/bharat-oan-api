@@ -1,0 +1,92 @@
+{
+  "skill_name": "candidate-evaluator",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "tech-mixed-signals",
+      "prompt": "Please evaluate this candidate using Tekdi's hiring framework. CV and interview transcript are below.\n\n[CONTENTS OF eval-1-tech-mixed.md]",
+      "expected_output": "Evaluation report for Priya Nair. Should detect Tech track, 7 years / Mid-Senior. Should rate Intellectual Honesty as Concern (cannot name a failure). Should rate Ownership as Weak/Concern (delegate pattern, credit inflation on CV vs transcript). Should note CV inconsistency (claimed 'led architecture' but key decisions owned by others). Recommendation should be Proceed with Caveats, with next round probing ownership depth and whether the pattern of deflection on failure is consistent.",
+      "assertions": [
+        {
+          "name": "detects-tech-track",
+          "description": "Report identifies this as a Tech role evaluation"
+        },
+        {
+          "name": "flags-cv-inconsistency",
+          "description": "Report notes the CV vs transcript inconsistency (claimed single-handed architecture, tooling actually built by Suresh)"
+        },
+        {
+          "name": "intellectual-honesty-concern",
+          "description": "Report rates Intellectual Honesty as Concern or Weak, citing inability to name a meaningful failure"
+        },
+        {
+          "name": "recommendation-not-proceed",
+          "description": "Recommendation is not a clean Proceed — either Proceed with Caveats or Decline"
+        },
+        {
+          "name": "cites-transcript-evidence",
+          "description": "Report quotes or specifically references moments from the transcript as evidence for at least 3 dimensions"
+        }
+      ],
+      "files": ["evals/fixtures/eval-1-tech-mixed.md"]
+    },
+    {
+      "id": 2,
+      "eval_name": "nontech-pm-strong",
+      "prompt": "Please evaluate this candidate using Tekdi's hiring framework. CV and interview transcript are below.\n\n[CONTENTS OF eval-2-nontech-strong.md]",
+      "expected_output": "Evaluation report for Arjun Mehta. Should detect Non-Tech track, 6 years / Mid. Strong ratings on Structured Thinking (scenario response showed diagnosis-before-action), Accountability (named specific failure with his role in it), Motivation (asked specific questions about government/social sector work). Purpose alignment should be noted positively (NGO background, government work). Recommendation should be Proceed.",
+      "assertions": [
+        {
+          "name": "detects-nontech-track",
+          "description": "Report identifies this as a Non-Tech role evaluation"
+        },
+        {
+          "name": "positive-scenario-response",
+          "description": "Report rates Scenario/Structured Thinking positively, noting he asked clarifying questions and diagnosed before acting"
+        },
+        {
+          "name": "accountability-noted",
+          "description": "Report specifically cites the requirements document failure as positive accountability evidence"
+        },
+        {
+          "name": "purpose-alignment-positive",
+          "description": "Report notes positive purpose/belief alignment — NGO background, specific questions about government work"
+        },
+        {
+          "name": "recommendation-proceed",
+          "description": "Overall recommendation is Proceed"
+        }
+      ],
+      "files": ["evals/fixtures/eval-2-nontech-strong.md"]
+    },
+    {
+      "id": 3,
+      "eval_name": "tech-red-flag-decline",
+      "prompt": "Please evaluate this candidate using Tekdi's hiring framework. CV and interview transcript are below.\n\n[CONTENTS OF eval-3-tech-redflag.md]",
+      "expected_output": "Evaluation report for Rahul Desai. Should detect Tech track, 9 years / Senior. Must flag CV inconsistency (claimed 'single-handedly architected', transcript revealed 6-7 person team). Must flag Intellectual Honesty Concern (cannot name a failure, guesses as expertise — e.g., LRU 'works in most cases' without reasoning). Should note pattern of deflecting specific questions to others (infra team, SRE team). Concern on Contribution Clarity. Recommendation should be Decline.",
+      "assertions": [
+        {
+          "name": "flags-cv-inflation",
+          "description": "Report explicitly flags the 'single-handedly architected' vs team-of-6-7 inconsistency as a red flag or CV inconsistency"
+        },
+        {
+          "name": "intellectual-honesty-red-flag",
+          "description": "Report identifies intellectual honesty concern — specifically the pattern of confident claims without supporting depth"
+        },
+        {
+          "name": "contribution-clarity-concern",
+          "description": "Report notes concern about contribution clarity — specifics consistently deferred to infra/SRE teams"
+        },
+        {
+          "name": "recommendation-decline",
+          "description": "Overall recommendation is Decline"
+        },
+        {
+          "name": "red-flags-section-populated",
+          "description": "Red Flags section is not empty — contains at least one specific flag with evidence"
+        }
+      ],
+      "files": ["evals/fixtures/eval-3-tech-redflag.md"]
+    }
+  ]
+}
